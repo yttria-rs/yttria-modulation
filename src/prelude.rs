@@ -1,1 +1,1 @@
-pub use super::traits::*;
+pub use super::traits::{Modulation, Modulator, Demodulator};

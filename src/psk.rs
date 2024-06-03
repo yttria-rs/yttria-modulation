@@ -1,29 +1,16 @@
 use num::complex::Complex32;
-use radio_math::linspace;
-use radio_math::prelude::*;
+use yttria_math::linspace;
+use yttria_math::prelude::*;
 use rayon::prelude::*;
 
 use crate::traits::*;
 
-#[cfg(feature = "radio-python")]
-use pyo3::prelude::*;
-
-#[cfg_attr(feature = "radio-python", pyclass)]
 pub struct PskModulation {
     pub bits_per_symbol: usize,
     pub sample_rate: f32,
     pub bandwidth: f32,
     pub symbol_map: Vec<Complex32>,
     // spreading_code: Option<Vec<u8>>,
-}
-
-#[cfg(feature = "radio-python")]
-#[pymethods]
-impl PskModulation {
-    #[new]
-    fn pynew(bits_per_symbol: usize, sample_rate: f32, bandwidth: f32) -> Self {
-        Self::new(bits_per_symbol, sample_rate, bandwidth)
-    }
 }
 
 impl PskModulation {
@@ -128,7 +115,7 @@ mod tests {
     use plotly::{Plot, Scatter};
 
     use super::*;
-    use radio_math::{arange, firwin2};
+    use yttria_math::{arange, firwin2};
 
     #[test]
     fn test_bpsk_modulate() {

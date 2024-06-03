@@ -1,19 +1,17 @@
 [package]
-name = "radio-modulation"
+name = "yttria-modulation"
 version = "0.1.0"
 edition = "2021"
 
-[features]
-radio-python = [ "dep:pyo3" ]
-
 [lib]
-name = "radio_modulation"
+name = "yttria_modulation"
 crate-type = ["cdylib"]
 
 [dependencies]
 num = "0.4.3"
-radio-math = { path = "../radio-math" }
-radio-coding = { path = "../radio-coding" }
-plotly = "0.8.4"
-pyo3 = { version = "0.21.2", optional = true, features = ["extension-module"]}
+yttria-math = { path = "../yttria-math" }
+yttria-coding = { path = "../yttria-coding" }
 rayon = "1.10.0"
+
+[dev-dependencies]
+plotly = "0.8.4"
