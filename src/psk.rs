@@ -1,4 +1,5 @@
 use num::complex::Complex32;
+use num::Zero;
 use yttria_math::linspace;
 use yttria_math::prelude::*;
 use rayon::prelude::*;
@@ -89,8 +90,7 @@ impl Modulator for PskModulation {
 
     fn modulate(&self, data: &[u8]) -> Vec<Complex32> {
         let len = (data.len() * 8).div_ceil(self.bits_per_symbol()) * self.samples_per_symbol();
-        let mut out = Vec::with_capacity(len);
-        unsafe { out.set_len(len) };
+        let mut out = vec![Complex32::zero(); len];
         self.modulate_into(data, out.as_mut_slice());
         out
     }
@@ -103,8 +103,7 @@ impl Demodulator for PskModulation {
 
     fn demodulate(&self, samples: &[Complex32]) -> Vec<u8> {
         let len = (samples.len() * self.bits_per_symbol()).div_ceil(self.samples_per_symbol() * 8);
-        let mut out = Vec::with_capacity(len);
-        unsafe { out.set_len(len) };
+        let mut out = vec![u8::zero(); len];
         self.demodulate_into(samples, out.as_mut_slice());
         out
     }

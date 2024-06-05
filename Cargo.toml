@@ -1,16 +1,19 @@
 [package]
 name = "yttria-modulation"
 version = "0.1.0"
+authors = ["Trevor Klingler"]
+description = "A communications library tailored for use with the yttria set of libraries"
+readme = "readme.md"
+repository = "https://github.com/yttria-rs/yttria-modulation"
+license = "MPL-2.0"
+keywords = ["dsp", "radio", "math"]
+categories = ["mathematics"]
 edition = "2021"
-
-[lib]
-name = "yttria_modulation"
-crate-type = ["cdylib"]
 
 [dependencies]
 num = "0.4.3"
-yttria-math = { path = "../yttria-math" }
-yttria-coding = { path = "../yttria-coding" }
+yttria-math = "0.1.0"
+yttria-coding = "0.1.0"
 rayon = "1.10.0"
 
 [dev-dependencies]
